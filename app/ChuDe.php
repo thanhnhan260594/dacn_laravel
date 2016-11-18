@@ -14,6 +14,7 @@ class ChuDe extends Model {
 	public function hoatuoi()
 	{
 		return $this->hasMany('App\HoaTuoi', 'Ma_CD');
+		//thay doi
 	}
 
 }
