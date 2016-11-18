@@ -14,5 +14,6 @@ class HoaTuoi extends Model {
 	public function chude()
 	{
 		return $this->belongsTo('App\ChuDe', 'Ma_CD');
+		//00000000000
 	}
 }
