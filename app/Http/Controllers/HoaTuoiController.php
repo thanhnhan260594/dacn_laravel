@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 use App\HoaTuoi;
 use App\ChuDe;
@@ -67,5 +68,54 @@ class HoaTuoiController extends Controller {
 		$sanphamlienquan = $Chitietsp->chude->hoatuoi->all();
 		
 		return view('HoaTuoi.Chitietsanpham',['danhmuc' =>$danhmuc,'xuatxu' => $xuatxu,'giamgia' =>$giamgia,'Chitietsp' => $Chitietsp,'sanphamlienquan' =>$sanphamlienquan]);
+	}
+	function getDangnhap()
+	{
+		$banner = DB::table('banner')->get();
+		$danhmuc = DB::table('chu_de')->orderBy('Ma_CD', 'asc')->take(5)->get();
+		$xuatxu = DB::table('xuat_xu')->orderBy('Ma_DD', 'asc')->take(5)->get();
+		$giamgia = DB::table('hoa_tuoi')->orderBy('Giam_gia', 'desc')->take(4)->get();
+		return view('HoaTuoi.Dangnhap',['banner' => $banner,'danhmuc' =>$danhmuc,'xuatxu' => $xuatxu,'giamgia' =>$giamgia]);
+	}
+	function postDangnhap(Request $request)
+	{
+		$this->validate($request,[
+			'username'=>'required',
+			'password'=>'required|min:3|max:20'
+			],[
+			'username.required'=>'Bạn chưa nhập tài khoản',
+			'password.required'=>'Bạn chưa nhập mật khẩu',
+			'password.min'=>'Mật khẩu phải lớn hơn 3 ký tự',
+			'password.max'=>'Mật khậu phải ít hơn 20 ký tự' ]);
+		if(Auth::attempt(['username'=>$request->username, 'password'=>$request->password]))
+		{
+			return redirect('/');
+		}
+		else
+		{
+			return redirect('Dangnhap')->with('Thongbao','Đăng nhập không thành công.');
+		}
+	}
+	function getDangky()
+	{
+		$banner = DB::table('banner')->get();
+		$danhmuc = DB::table('chu_de')->orderBy('Ma_CD', 'asc')->take(5)->get();
+		$xuatxu = DB::table('xuat_xu')->orderBy('Ma_DD', 'asc')->take(5)->get();
+		$giamgia = DB::table('hoa_tuoi')->orderBy('Giam_gia', 'desc')->take(4)->get();
+		return view('HoaTuoi.Dangky',['banner' => $banner,'danhmuc' =>$danhmuc,'xuatxu' => $xuatxu,'giamgia' =>$giamgia]);
+	}
+	function postDangky(Request $request)
+	{
+		$this->validate($request,[
+			'username'=>'required|min:3',
+			'email'=>'required|unique:users,email',
+			'name'=>'required|max:50',
+			'password'=>'required|min:3|max:20'
+			]
+		$banner = DB::table('banner')->get();
+		$danhmuc = DB::table('chu_de')->orderBy('Ma_CD', 'asc')->take(5)->get();
+		$xuatxu = DB::table('xuat_xu')->orderBy('Ma_DD', 'asc')->take(5)->get();
+		$giamgia = DB::table('hoa_tuoi')->orderBy('Giam_gia', 'desc')->take(4)->get();
+		return view('HoaTuoi.Dangky',['banner' => $banner,'danhmuc' =>$danhmuc,'xuatxu' => $xuatxu,'giamgia' =>$giamgia]);
 	}
 }

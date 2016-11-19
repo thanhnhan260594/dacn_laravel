@@ -14,6 +14,7 @@
     <link rel="stylesheet" type="text/css" href="{{ asset("resources/views/Themes/Contents/css/bootstrap.min.css") }}"/> 
     <link rel="stylesheet" type="text/css" href="{{ asset("resources/views/Themes/Contents/css/nn-style.css") }}"/>
     <link rel="stylesheet" type="text/css" href="{{ asset("resources/views/Themes/Contents/css/nn-style1.css") }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset("resources/views/Themes/Contents/css/login-style.css") }}"/>
 
      <link href="{{ asset("resources/views/Themes/Contents/Plugins/owl-carousel/owl.carousel.css")}}" rel="stylesheet" />
     <link href="{{ asset("resources/views/Themes/Contents/Plugins/owl-carousel/owl.transitions.css")}}" rel="stylesheet" />
@@ -74,7 +75,7 @@
             </div>
             <div class="navbar-collapse collapse js-navbar-collapse" style="background-color:#FFF">
                 <ul class="nav navbar-nav">
-                    <li><a href="@Url.Action("Index","HoaTuoi")" class="">TRANG CHỦ</a></li>
+                    <li><a href="#" class="">TRANG CHỦ</a></li>
                     <li><a href="#">GIỚI THIỆU</a></li>
                     <li><a href="#">SẢN PHẨM</a></li>
                     <li><a href="#">LIÊN HỆ</a></li>
@@ -239,6 +240,7 @@
         </div>
 </div>
 </body>
+
 <script type="text/javascript" src="{{ asset("resources/views/Themes/Contents/Plugins/owl-carousel/owl.carousel.min.js") }}"></script>
 <script>
         $(document).ready(function () {

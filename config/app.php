@@ -26,7 +26,7 @@ return [
 	|
 	*/
 
-	'url' => env('APP_URL', 'http://localhost:81/www/Frameword/HOA_TUOI_2'),
+	'url' => env('APP_URL', 'http://localhost:81/www/Framework/HOA_TUOI_2'),
 
 	/*
 	|--------------------------------------------------------------------------
