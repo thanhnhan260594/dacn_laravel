@@ -11,3 +11,6 @@ Route::post('Dangnhap','HoaTuoiController@postDangnhap');
 
 Route::get('Dangky','HoaTuoiController@getDangky');
 Route::post('Dangky','HoaTuoiController@postDangky');
+
+Route::get('Gioithieu','HoaTuoiController@Gioithieu');
+Route::get('Lienhe','HoaTuoiController@Lienhe');
