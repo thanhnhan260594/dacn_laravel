@@ -6,7 +6,7 @@ class DangnhapRequest extends Request {
 
 	/**
 	 * Determine if the user is authorized to make this request.
-	 *
+	 * abc
 	 * @return bool
 	 */
 	public function authorize()
